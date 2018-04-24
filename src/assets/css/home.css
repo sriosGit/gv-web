@@ -1,0 +1,260 @@
+ .portrait-container{
+    height: 485px !important;
+  }
+.portrait-section{
+	width: 100%;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  height: 485px !important;
+}
+.portrait-text{
+  width: 100%;
+  color: white;
+  font-size: 25px;
+  font-weight: 200;
+  position: absolute;
+  bottom: 15%;
+}
+.portrait-title{
+  font-size: 50px;
+  font-weight: 400;
+}
+.portrait-section img{
+	width: 100%;
+    margin: -9% 0 0 0;
+}
+
+.tint {
+    position: relative;
+  }
+  
+  .tint:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .t2:before {
+    background: #cc8809;
+    opacity: 0.64
+  }
+
+  .practice-area-container .left-area{
+  	font-size: 40px;
+  	text-align: left;
+  	width: 40.30%;
+  	height: 100%;
+  	padding-top: 100px;
+  	font-weight: 300;
+  }
+  .contact-us-container{
+    height: 640px;
+    display: block;
+    position: relative;
+    background-color: black;
+    z-index: -100;
+  }
+  .contact-us-container::after{
+    content: "";
+    background: url('../img/contact-bg.jpg');
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -100;   
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    opacity: 0.5
+  }
+  .contact-us-container .left-area{
+    text-align: left;
+    width: 55%;
+    padding-top: 40px;
+    background-color: transparent;
+    font-weight: 300;
+    padding-right: 30px;
+  }
+  .contact-us-container .right-area{
+    text-align: left;
+    width: 45%;
+    height: 400px;
+    background-color: transparent; 
+    padding-top: 40px;
+    font-weight: 300;
+    padding-left: 30px;
+  }
+  .left-form{
+    float: right;
+    text-align: left;
+    width: 500px;
+  }
+  .right-details{
+    width: 400px;
+  }
+  .form-title{
+    font-size: 30px;
+    color: white;
+    padding: 0 5px;
+  }
+  .form-title .strong{
+    font-weight: 400 !important;
+  }
+  .form-input{
+    font-size: 15px;
+    height: 50px;
+    width: 100%
+  }
+  .form-group{
+    padding: 0 5px;
+  }
+  .form-group.inline{
+    width: 50%;
+  }
+  .form-group textarea{
+    height: 150px;
+    font-size: 15px;
+    width: 100%
+  }
+  .form-body{
+    margin-top: 30px;
+  }
+  .form-group.submit button{
+    margin-top: -20px;
+    font-size: 20px;
+    background: #cc8809;
+    color: white;
+    border: 0
+  }
+  .form-group.submit{
+    margin-top: 25px;
+  }
+  .inner-text{
+  	width: 35%;
+  	margin: 0 auto;
+  }
+  .inner-text .strong{
+  	font-weight: 400 !important;
+  }
+  
+  .practice-area-container .right-area{
+  	display: flex;
+    align-items: flex-start;
+  	width: 59.70%;
+    padding-top: 70px;
+    padding-left: 5%;
+    background-color: white !important;
+  }
+  .right-area .inline{
+    width: 300px;
+  }
+.practice-area-container{
+  display: flex;
+  align-items: flex-start;
+  background-color: #f7ecd7;
+}
+  .practice-area{
+    height: 65px;
+    margin-bottom: 70px;
+    margin-right: 5%
+  }
+  .area-square{
+    margin: 0px 20px 0px;
+    padding-top: 5px;
+    font-size: 10px;
+    height: 100%;
+    color: #cc8809;
+  }
+  .area-title{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+    color: #cc8809;
+  }
+  .area-text{
+    color: #4e4d4d;
+    max-width: 230px;
+    text-align: left;
+    font-size: 15px;
+  }
+  .at-img{
+    width: 191px;
+    height: 225px;
+    background-color: gray;
+    margin-bottom: 15px;
+  }
+  .at-name{
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  .at-pos{
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .our-attorneys-title{
+    font-size: 50px;
+    font-weight: 300;
+    padding: 50px 0 50px 0; 
+  }
+  .our-attorneys-title .strong{
+    font-weight: 400 !important; 
+  }
+  .attorney-profile-container{
+    padding: 0 40px 70px 40px;
+  }
+  .orange-line{
+    background: #cc8809;
+    height: 1px;
+  }
+  .our-attorneys-container{
+    background-color: #f8f8f8;
+  }
+  .text-yellow{
+  color: #ffcd00;
+  font-size: 15px;
+}
+.map-container{
+  padding: 0 5px;
+  width: 330px;
+  height: 300px;
+  margin-top: 30px;
+}
+@media(min-width:1400px) {
+  .portrait-container{
+    height: 490px !important;
+  }
+  .portrait-section{
+    height: 490px !important;
+  }
+}
+@media(max-width:1100px) {
+  .portrait-container{
+    height: 485px !important;
+  }
+  .portrait-section{
+    height: 485px !important;
+  }
+}
+@media(max-width:900px) {
+  .portrait-container{
+    height: 418px !important;
+  }
+  .portrait-section{
+    height: 420px !important;
+  }
+}
+@media(max-width:800px) {
+  .portrait-container{
+    height: 363px !important;
+  }
+  .portrait-section{
+    height: 363px !important;
+  }
+}
+

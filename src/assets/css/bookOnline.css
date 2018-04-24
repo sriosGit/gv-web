@@ -1,0 +1,35 @@
+.book-online-container{
+    background-color: white !important;
+    height: 580px;
+  }
+   .book-online-container .left-area{
+    text-align: left;
+    width: 55%;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    background-color: transparent;
+    font-weight: 300;
+    
+  }
+  .book-online-container .right-area{
+    text-align: left;
+    width: 45%;
+    height: 400px;
+    background-color: transparent; 
+    padding-top: 40px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    font-weight: 300;
+   
+  }
+  .form-input{
+  	border: 1px solid #a9a9a9
+  }
+  .form-group textarea{
+  	border: 1px solid #a9a9a9
+  }
+  .img-mazo{
+  	padding-top: 75px;
+    width: 420px;
+  }

@@ -1,0 +1,37 @@
+.about-us-container{
+	height: 100%
+}
+.attorney-about-container{
+	width: 900px;
+}
+.attorney-about-container .at-img{
+    width: 280px;
+    height: 320px;
+    margin: 0;
+    background-color: gray;
+ }
+ .at-about-right{
+ 	max-width: 480px;
+ 	height: 320px;
+ 	text-align: left;
+ 	float: right;
+ 	padding: 20px 0;
+ }
+
+ .at-about-left{
+ 	max-width: 480px;
+ 	height: 320px;
+ 	text-align: right;
+ 	float: left;
+ 	padding: 20px 0;
+ }
+
+.at-about-name{
+ 	color: #e8492b;
+ 	font-size: 25px;
+ 	margin: 0;
+ 	font-weight: 500;
+ }
+ .at-about-pos{
+ 	font-weight: 300;
+ }
