@@ -5,7 +5,7 @@ export class Banner extends Component {
 
 	render() {
     return (
-      	<center class="full-width top-banner">{this.props.title}</center>
+      	<center className="full-width top-banner">{this.props.title}</center>
     );
   }
 }

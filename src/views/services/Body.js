@@ -9,6 +9,31 @@ import '../../assets/css/home.css';
 import '../../assets/css/services.css';
 class Body extends Component {
 
+	constructor(props) {
+        super(props)
+        this.state = {
+            isMobile: false
+        }
+        
+    }
+ 	componentWillMount = () => {
+      	this.updateDimensions()
+  	}
+  	componentDidMount = () => {
+        window.addEventListener("resize", this.updateDimensions);
+  	}
+  	componentWillUnmount = () => {
+        window.removeEventListener("resize", this.updateDimensions);
+  	}
+  	updateDimensions = () => {
+  		if(window.innerWidth <= 800){
+  		 	this.setState({isMobile: true})	
+  		}else if(this.state.isMobile && window.innerWidth > 800){
+  			this.setState({isMobile: false})	
+  		}
+
+  	}
+
 	renderBlueAbout(){
 		return(
 			<div className="blueBG">

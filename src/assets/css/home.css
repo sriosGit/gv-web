@@ -57,7 +57,7 @@
     display: block;
     position: relative;
     background-color: black;
-    z-index: -100;
+    z-index: 100;
   }
   .contact-us-container::after{
     content: "";
@@ -80,6 +80,10 @@
     font-weight: 300;
     padding-right: 30px;
   }
+  .contact-us-container .contact-form{
+    background-color: transparent;
+    font-weight: 300; 
+  }
   .contact-us-container .right-area{
     text-align: left;
     width: 45%;
@@ -93,9 +97,6 @@
     float: right;
     text-align: left;
     width: 500px;
-  }
-  .right-details{
-    width: 400px;
   }
   .form-title{
     font-size: 30px;
@@ -255,6 +256,44 @@
   }
   .portrait-section{
     height: 363px !important;
+  }
+  .contact-us-container{
+    height: 100%;
+    padding: 20px;
+    text-align: left
+  }
+  .contact-us-container .right-area{
+    width: 100%;
+    text-align: left;
+    height: 250px;
+    background-color: transparent; 
+    padding-top: 40px;
+    font-weight: 300;
+    padding-left: 0
+  }
+  .practice-area-container .left-area{
+    font-size: 30px;
+    font-weight: 300;
+    width: 100%;
+    padding: 20px 0; 
+    text-align: center;
+  }
+  .practice-area-container .right-area{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0;
+    background-color: white !important;
+  }
+  .inner-text{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .practice-area{
+    width: 100%;
+    height: 65px;
+    margin: 0 35px;
+    margin-right: 5%
   }
 }
 

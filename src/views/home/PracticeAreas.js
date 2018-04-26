@@ -14,16 +14,15 @@ class PracticeAreas extends Component {
         );
     }
 
-
-    render() {
-        return (
-            <div className="full-width practice-area-container">
-          		<div className="left-area pull-left">
+    renderDesktop(){
+        return(
+            <div className="full-width">
+            <div className="left-area pull-left">
                     <div className="inner-text">
-                        <div className="strong">PRACTICE</div>
-                        <div>AREAS</div>
+                        <div className="strong">NUESTROS</div>
+                        <div>SERVICIOS</div>
                     </div>
-          		</div>
+                </div>
                 <div className="right-area pull-right">
                 <center>
                     <div className="inline">
@@ -36,6 +35,33 @@ class PracticeAreas extends Component {
                     </div>
                 </center>
                 </div>
+                </div>
+            )
+    }
+    renderMobile(){
+        return(
+        <center className="full-width">
+        <div className="left-area">
+                    <div className="inner-text">
+                        <span className="strong">NUESTROS </span>SERVICIOS
+                    </div>
+                </div>
+                <div className="right-area">
+                <center className="full-width">
+                        {this.renderPractice("PRACTICA 1", "Esta es la descripcion para la primera area")}
+                        {this.renderPractice("PRACTICA 2", "Esta es la descripcion para la segunda area")}
+                        {this.renderPractice("PRACTICA 3", "Esta es la descripcion para la tercera area")}
+                        {this.renderPractice("PRACTICA 4", "Esta es la descripcion para la cuarta area")}
+                </center>
+                </div>
+                </center>
+            )
+    }
+    render() {
+        const {isMobile} = this.props
+        return (
+            <div className="full-width practice-area-container">
+          		{isMobile ? this.renderMobile() : this.renderDesktop()}
             </div>
         );
     }
