@@ -20,8 +20,8 @@ class PracticeAreas extends Component {
             <div className="full-width practice-area-container">
           		<div className="left-area pull-left">
                     <div className="inner-text">
-                        <div className="strong">PRACTICE</div>
-                        <div>AREAS</div>
+                        <div>ÁREAS DE</div>
+                        <div className="strong">PRÁCTICA</div>
                     </div>
           		</div>
                 <div className="right-area pull-right">

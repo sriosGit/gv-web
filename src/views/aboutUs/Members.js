@@ -28,9 +28,9 @@ class OurAttorneys extends Component {
     render() {
         return (
             <div className="full-width about-us-container">
-            <div className="our-attorneys-title"><span className="strong">OUR</span> ATTORNEYS</div>
-          		{this.renderAbout("","JHON SMITH", "PARTNER", "Tel: 123-456-7890", "info@mysite.com", false)}
-                {this.renderAbout("","JHON SMITH", "PARTNER", "Tel: 123-456-7890", "info@mysite.com", true)}
+            <div className="our-attorneys-title"><span className="strong">NUESTRO</span> EQUIPO </div>
+          		{this.renderAbout("","CECILIA GAMARRA VAISMAN", "SOCIO", "Tel: 999-265-059", "cecilia@gvaisman.com", false)}
+                {this.renderAbout("","MARTIN MENDOZA", "SOCIO", "Tel: 123-456-7890", "martin@cgvaisman.com", true)}
             </div>
         );
     }
