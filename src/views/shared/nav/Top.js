@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 //import style from '../../../styles/nav'
 import emailIcon from '../../../assets/img/emai-icon.svg'
 import phoneIcon from '../../../assets/img/phone-icon.svg'
-import { fallDown as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 
 class Top extends Component {
 	
