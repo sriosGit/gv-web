@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Top from './Top'
 import Bottom from './Bottom'
 import '../../../assets/css/nav.css'
+
 class Header extends Component {
 
 	renderMobileBar(isMobile){

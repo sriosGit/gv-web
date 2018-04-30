@@ -164,12 +164,9 @@ class Body extends Component {
   		const {isMobile} = this.state
     	return (
       	<div className="App">
-        	<Header/>
         	<Banner  title={"SERVICIOS"}/>
         	<ServiceAreas isMobile={isMobile}/>
         	{this.renderBlueAbout()}
-        	<ContactUs isMobile={isMobile}/>
-        	<BottomBar/>
       	</div>
     	);
   	}

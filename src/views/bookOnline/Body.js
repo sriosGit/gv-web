@@ -36,10 +36,8 @@ class Body extends Component {
     const isMobile = window.innerWidth < 800
     return (
       <div className="App">
-        <Header/>
         <Banner title={"BOOKING ONLINE"}/>
         <Booking isMobile={isMobile}/>
-        <BottomBar isMobile={isMobile}/>
       </div>
     );
   }

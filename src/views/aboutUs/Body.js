@@ -35,11 +35,8 @@ class Body extends Component {
     const {isMobile} = this.state
     return (
       <div className="App">
-        <Header/>
         <Banner  title={"QUIENES SOMOS"}/>
         <Members isMobile={isMobile}/>
-        <ContactUs  isMobile={isMobile}/>
-        <BottomBar/>
       </div>
     );
   }

@@ -56,7 +56,7 @@ body {
   position: relative;
 }
 .yellow{
-  color: #ffcd00;
+  color: #ffcd00 !important;
 }
 .hidden{
   visibility: hidden;
