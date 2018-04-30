@@ -50,7 +50,9 @@
   	width: 40.30%;
   	height: 100%;
   	padding-top: 100px;
+    float: left;
   	font-weight: 300;
+    
   }
   .contact-us-container{
     height: 640px;
@@ -92,6 +94,7 @@
     padding-top: 40px;
     font-weight: 300;
     padding-left: 30px;
+    float: left;
   }
   .left-form{
     float: right;
@@ -199,7 +202,7 @@
     font-size: 15px;
   }
   .our-attorneys-title{
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 300;
     padding: 50px 0 50px 0; 
   }
@@ -258,7 +261,7 @@
     height: 363px !important;
   }
   .contact-us-container{
-    height: 100%;
+    height: 860px;
     padding: 20px;
     text-align: left
   }
@@ -291,9 +294,58 @@
   }
   .practice-area{
     width: 100%;
-    height: 65px;
-    margin: 0 35px;
-    margin-right: 5%
+    height: 110px;
+    padding: 20px;
+    margin: 0;
+  }
+  .portrait-section img{
+        margin: -2% 0 0 0;
+  }
+  .portrait-text {
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    font-weight: 200;
+    position: absolute;
+    bottom: 25%;
+    padding: 0 20px;
+}
+  .portrait-title{
+    font-size: 40px;
+    font-weight: 400;
+  }
+  .area-square{
+    margin: 0 10px 0;
+  }
+  .area-text{
+    color: #4e4d4d;
+    max-width: 100%;
+    font-size: 15px;
   }
 }
+    @media (max-width: 376px){
+    .portrait-container {
+        height: 288px !important;
+    }
+
+  }
+
+  @media (max-width: 321px){
+    .contact-us-container{
+    height: 900px;
+    padding: 20px;
+    text-align: left
+  }
+    .portrait-container {
+        height: 288px !important;
+    }
+      .portrait-text {
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    font-weight: 200;
+    position: absolute;
+    bottom: 28%;
+}
+  }
 

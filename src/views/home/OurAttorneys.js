@@ -25,7 +25,7 @@ class OurAttorneys extends Component {
     render() {
         return (
             <div className="full-width our-attorneys-container">
-            <div className="our-attorneys-title"><span className="strong">OUR</span> ATTORNEYS</div>
+            <div className="our-attorneys-title"><span className="strong">NUESTRO</span> EQUIPO</div>
           		{this.renderProfile("","JHON SMITH", "PARTNER", "Tel: 123-456-7890", "info@mysite.com")}
                 {this.renderProfile("","JHON SMITH", "PARTNER", "Tel: 123-456-7890", "info@mysite.com")}
                 {this.renderProfile("","JHON SMITH", "PARTNER", "Tel: 123-456-7890", "info@mysite.com")}

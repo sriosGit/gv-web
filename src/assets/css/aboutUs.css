@@ -35,3 +35,30 @@
  .at-about-pos{
  	font-weight: 300;
  }
+@media(max-width:800px) {
+	.attorney-about-container{
+	width: 100%;
+}
+}
+ @media (max-width: 376px){
+    .portrait-container {
+        height: 288px !important;
+    }
+
+  }
+
+  @media (max-width: 321px){
+    .portrait-container {
+        height: 288px !important;
+    }
+      .portrait-text {
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    font-weight: 200;
+    position: absolute;
+    bottom: 28%;
+}
+  }
+
+

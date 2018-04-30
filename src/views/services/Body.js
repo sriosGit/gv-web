@@ -12,7 +12,7 @@ class Body extends Component {
 	constructor(props) {
         super(props)
         this.state = {
-            isMobile: false
+            isMobile: this.props.isMobile || false
         }
         
     }
@@ -107,13 +107,14 @@ class Body extends Component {
 	}
 
   	render() {
+  		const {isMobile} = this.state
     	return (
       	<div className="App">
         	<Header/>
         	<Banner  title={"About Us"}/>
-        	<ServiceAreas/>
+        	<ServiceAreas isMobile={isMobile}/>
         	{this.renderBlueAbout()}
-        	<ContactUs/>
+        	<ContactUs isMobile={isMobile}/>
         	<BottomBar/>
       	</div>
     	);

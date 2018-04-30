@@ -2,6 +2,31 @@ import React, { Component } from 'react';
 import GMap from './Map'
 class ContactUs extends Component {
 
+	constructor(props) {
+        super(props)
+        this.state = {
+            isMobile: window.innerWidth <= 800 || false
+        }
+        
+    }
+ 	componentWillMount = () => {
+      	this.updateDimensions()
+  	}
+  	componentDidMount = () => {
+        window.addEventListener("resize", this.updateDimensions);
+  	}
+  	componentWillUnmount = () => {
+        window.removeEventListener("resize", this.updateDimensions);
+  	}
+  	updateDimensions = () => {
+  		if(window.innerWidth <= 800){
+  		 	this.setState({isMobile: true})	
+  		}else if(this.state.isMobile && window.innerWidth > 800){
+  			this.setState({isMobile: false})	
+  		}
+
+  	}
+  	
 	renderLeftSide(){
 		return(
 			<div className="left-area pull-left">
@@ -98,7 +123,7 @@ class ContactUs extends Component {
 			)
 	}
     render() {
-    	const {isMobile} = this.props
+    	const {isMobile} = this.state
         return (
 	        <div className="full-width contact-us-container">
 	          		{isMobile ? this.renderContactForm() : this.renderLeftSide()}

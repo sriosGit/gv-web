@@ -16,13 +16,12 @@ class Body extends Component {
    	constructor(props) {
         super(props)
         this.state = {
-            isMobile: false
+            isMobile: window.innerWidth <= 800 || false
         }
         
     }
  	componentWillMount = () => {
       	this.updateDimensions()
-      	
   	}
   	componentDidMount = () => {
         window.addEventListener("resize", this.updateDimensions);
@@ -39,11 +38,13 @@ class Body extends Component {
 
   	}
   	render() {
-	  	const {isMobile}= this.state
+	  	const {isMobile} = this.state
 	    return (
 	      <div className="App">
 	        <Header isMobile={isMobile}/>
+	        <Portrait isMobile={isMobile}/>
 	        <PracticeAreas isMobile={isMobile}/>
+	        <OurAttorneys isMobile={isMobile}/>
 	        <ContactUs isMobile={isMobile}/>
 	        <BottomBar isMobile={isMobile}/>
 	      </div>

@@ -10,6 +10,7 @@ import ContactUs from '../views/contactUs/Body'
 //<Route path="*" component={NotFound} />
 const onChange = () => {
 	window.scrollTo(0, 0)
+	window.location.reload();
 }
 export default (
 	<Switch>

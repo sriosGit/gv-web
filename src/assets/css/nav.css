@@ -134,3 +134,9 @@
 		height: 120px;
 	}
 }
+
+  @media (max-width: 321px){
+  	.App-logo img{
+		width: 200px;
+	}
+  }

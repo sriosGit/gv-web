@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import macitoMadera from '../../assets/img/Mazo.jpg'
 class ContactUs extends Component {
 
-	renderLeftSide(){
+	renderLeftSide(isMobile){
 		return(
 			<div className="left-area pull-left">
 	          	<div className="left-form">
@@ -28,7 +28,7 @@ class ContactUs extends Component {
 	                    	<textarea placeholder={"Ingresa tu situación"}/>
 	                    </div>
 	                    <div className="form-group submit">
-	                    	<button>Submit</button>
+	                    	{isMobile ?<center><button>Submit</button></center> : <button>Submit</button>}
 	                    </div>
 	                </div>
 	          	</div>
@@ -45,10 +45,11 @@ class ContactUs extends Component {
 			)
 	}
     render() {
+    	const {isMobile} = this.props
         return (
             <div className="full-width book-online-container">
-          		{this.renderLeftSide()}
-                {this.renderRightSide()}
+          		{this.renderLeftSide(isMobile)}
+                {isMobile ? null : this.renderRightSide()}
             </div>
         );
     }

@@ -11,28 +11,27 @@ class Body extends Component {
 	constructor(props) {
         super(props)
         this.state = {
-            isMobile: false
+            isMobile: window.innerWidth <= 800 || false
         }
         
     }
- 	componentWillMount = () => {
-      	this.updateDimensions()
-      	console.log("back to home")
-  	}
-  	componentDidMount = () => {
+  componentWillMount = () => {
+        this.updateDimensions()
+    }
+    componentDidMount = () => {
         window.addEventListener("resize", this.updateDimensions);
-  	}
-  	componentWillUnmount = () => {
+    }
+    componentWillUnmount = () => {
         window.removeEventListener("resize", this.updateDimensions);
-  	}
-  	updateDimensions = () => {
-  		if(window.innerWidth <= 800){
-  		 	this.setState({isMobile: true})	
-  		}else if(this.state.isMobile && window.innerWidth > 800){
-  			this.setState({isMobile: false})	
-  		}
+    }
+    updateDimensions = () => {
+      if(window.innerWidth <= 800){
+        this.setState({isMobile: true}) 
+      }else if(this.state.isMobile && window.innerWidth > 800){
+        this.setState({isMobile: false})  
+      }
 
-  	}
+    }
 	renderMap(){
 		return(
 				<center>
@@ -44,12 +43,13 @@ class Body extends Component {
 	}
 
   	render() {
+  		const isMobile = window.innerWidth <= 800
     	return (
       	<div className="App">
         	<Header/>
         	<Banner  title={"Contact Us"}/>
-        	{this.renderMap()}
-        	<ContactUs/>
+        	{isMobile ? null : this.renderMap()}
+        	<ContactUs isMobile={isMobile}/>
         	<BottomBar/>
       	</div>
     	);
