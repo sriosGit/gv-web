@@ -33,7 +33,61 @@ class Body extends Component {
   		}
 
   	}
+  	renderPractice(title, text){
+        return(
+            <div className="practice-area">
+                <div className="area-square pull-left"><i className="fas fa-square-full"></i></div>
+                <div>
+                    <div className="area-title">{title}</div>
+                    <div className="area-text">{text}</div>
+                </div>
+            </div>
+        );
+    }
 
+    renderDesktop(){
+        return(
+            <div className="full-width">
+            <div className="left-area pull-left">
+                    <div className="inner-text">
+                        <div className="strong">NUESTROS</div>
+                        <div>SERVICIOS</div>
+                    </div>
+                </div>
+                <div className="right-area pull-right">
+                <center>
+                    <div className="inline">
+                        {this.renderPractice("PRACTICA 1", "Esta es la descripcion para la primera area")}
+                        {this.renderPractice("PRACTICA 2", "Esta es la descripcion para la segunda area")}
+                    </div>
+                    <div className="inline">
+                        {this.renderPractice("PRACTICA 3", "Esta es la descripcion para la tercera area")}
+                        {this.renderPractice("PRACTICA 4", "Esta es la descripcion para la cuarta area")}
+                    </div>
+                </center>
+                </div>
+                </div>
+            )
+    }
+    renderMobile(){
+        return(
+        <center className="full-width">
+        <div className="left-area">
+                    <div className="inner-text">
+                        <span className="strong">NUESTROS </span>SERVICIOS
+                    </div>
+                </div>
+                <div className="right-area">
+                <center className="full-width">
+                        {this.renderPractice("PRACTICA 1", "Esta es la descripcion para la primera area")}
+                        {this.renderPractice("PRACTICA 2", "Esta es la descripcion para la segunda area")}
+                        {this.renderPractice("PRACTICA 3", "Esta es la descripcion para la tercera area")}
+                        {this.renderPractice("PRACTICA 4", "Esta es la descripcion para la cuarta area")}
+                </center>
+                </div>
+                </center>
+            )
+    }
 	renderBlueAbout(){
 		return(
 			<div className="blueBG">
@@ -111,7 +165,7 @@ class Body extends Component {
     	return (
       	<div className="App">
         	<Header/>
-        	<Banner  title={"About Us"}/>
+        	<Banner  title={"SERVICIOS"}/>
         	<ServiceAreas isMobile={isMobile}/>
         	{this.renderBlueAbout()}
         	<ContactUs isMobile={isMobile}/>

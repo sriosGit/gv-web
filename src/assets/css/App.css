@@ -55,3 +55,14 @@ body {
   z-index: -1;
   position: relative;
 }
+.yellow{
+  color: #ffcd00;
+}
+.hidden{
+  visibility: hidden;
+}
+  @media(max-width: 799px){
+    .top-banner{
+      margin-top: 110px;
+}
+    }

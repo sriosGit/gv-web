@@ -15,39 +15,42 @@ class Body extends Component {
         }
         
     }
-  componentWillMount = () => {
-        this.updateDimensions()
-    }
-    componentDidMount = () => {
+ 	componentWillMount = () => {
+ 		window.addEventListener("resize", this.updateDimensions);
+      	this.updateDimensions()
+  	}
+  	componentDidMount = () => {
         window.addEventListener("resize", this.updateDimensions);
-    }
-    componentWillUnmount = () => {
+  	}
+  	componentWillUnmount = () => {
         window.removeEventListener("resize", this.updateDimensions);
-    }
-    updateDimensions = () => {
-      if(window.innerWidth <= 800){
-        this.setState({isMobile: true}) 
-      }else if(this.state.isMobile && window.innerWidth > 800){
-        this.setState({isMobile: false})  
-      }
+  	}
+  	updateDimensions = () => {
+  		if(window.innerWidth <= 800){
+  		 	this.setState({isMobile: true})
+  		 	console.log("mobil")	
+  		}else if(this.state.isMobile && window.innerWidth > 800){
+  			this.setState({isMobile: false})	
+  			console.log("desktop")
+  		}
 
-    }
+  	}
 	renderMap(){
 		return(
 				<center>
 					<div className="map-container-contact">
-	                	<GMap cords={{lat: 40.854885, lng: -88.081807}} zoom={10} width={940} height={340} title={"Gamarra Vaisman & Associates"} name="Av. Alfredo Mosser 123"/>
+	                	<GMap cords={{lat: 40.854885, lng: -88.081807}} zoom={10} width={'80%'} height={340} title={"Gamarra Vaisman & Associates"} name="Av. Alfredo Mosser 123"/>
 	                </div>
 				</center>
 			)
 	}
 
   	render() {
-  		const isMobile = window.innerWidth <= 800
+  		const {isMobile} = this.state
     	return (
       	<div className="App">
         	<Header/>
-        	<Banner  title={"Contact Us"}/>
+        	<Banner  title={"CONTACTANOS"}/>
         	{isMobile ? null : this.renderMap()}
         	<ContactUs isMobile={isMobile}/>
         	<BottomBar/>

@@ -9,6 +9,7 @@
     height: 320px;
     margin: 0;
     background-color: gray;
+    margin-bottom: 20px;
  }
  .at-about-right{
  	max-width: 480px;
@@ -38,6 +39,10 @@
 @media(max-width:800px) {
 	.attorney-about-container{
 	width: 100%;
+}
+.at-about-description{
+	text-align: left;
+	padding: 0 20px;
 }
 }
  @media (max-width: 376px){

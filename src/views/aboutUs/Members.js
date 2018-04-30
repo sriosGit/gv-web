@@ -9,7 +9,7 @@ class OurAttorneys extends Component {
                 <div className={isLeft ? "at-about-left inline" : "at-about-right inline"}>
                     <div className="at-about-name">{name}</div>
                     <div className="at-about-pos">{position}</div>
-                    <p>Just another text of another website of another day of work, struggling to make the css style 
+                    <p className="at-about-description">Just another text of another website of another day of work, struggling to make the css style 
                     obbey as the commander of all style, my name is Harris Louis of Vilcabamba and this text will repeat two times.Just another text of another website of another day of work, struggling to make the css style 
                     obbey as the commander of all style, my name is Harris Louis of Vilcabamba and this text will repeat two times.</p>
                     <p>
@@ -33,7 +33,7 @@ class OurAttorneys extends Component {
                 <div className={"at-about"}>
                     <div className="at-about-name">{name}</div>
                     <div className="at-about-pos">{position}</div>
-                    <p>Just another text of another website of another day of work, struggling to make the css style 
+                    <p className="at-about-description">Just another text of another website of another day of work, struggling to make the css style 
                     obbey as the commander of all style, my name is Harris Louis of Vilcabamba and this text will repeat two times.Just another text of another website of another day of work, struggling to make the css style 
                     obbey as the commander of all style, my name is Harris Louis of Vilcabamba and this text will repeat two times.</p>
                     <p>

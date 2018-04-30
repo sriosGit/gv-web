@@ -36,7 +36,7 @@ class Body extends Component {
     return (
       <div className="App">
         <Header/>
-        <Banner  title={"About Us"}/>
+        <Banner  title={"QUIENES SOMOS"}/>
         <Members isMobile={isMobile}/>
         <ContactUs  isMobile={isMobile}/>
         <BottomBar/>

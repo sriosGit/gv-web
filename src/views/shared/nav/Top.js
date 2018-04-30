@@ -11,6 +11,7 @@ import phoneIcon from '../../../assets/img/phone-icon.svg'
 import { fallDown as Menu } from 'react-burger-menu'
 
 class Top extends Component {
+	
 
 	renderContact(img, title, subtitle){
 		return(
@@ -40,23 +41,23 @@ class Top extends Component {
 	renderBurgerMenu(){
 		return(
 			<div className="inline">
-				<Menu width={'30%'} right>
-			        <a id="home" className="menu-item" href="/">Home</a>
-			        <a id="about" className="menu-item" href="/about">About</a>
-			        <a id="contact" className="menu-item" href="/contact">Contact</a>
-			        <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+				<Menu width={'100%'}>
+			        <a id="about" className="menu-item" href="/about">Quienes somos</a>
+			        <a id="services" className="menu-item" href="/services">Servicios</a>
+			        <a id="contact" className="menu-item" href="/contactus">Contactanos</a>
+			        <a id="booking" className="menu-item yellow" href="/bookwithus">Reserva una cita</a>
 			    </Menu>
 		    </div>
       )
 	}
 	render = () => {
-		const {isMobile} = this.props
+		const {isMobile,classes} = this.props
 		return (
-			<div className="navbar navbar-white no-padding">
+			<div className={classes || "no-padding"}>
 				<div className="navbar-header App-logo pull-left inline">
 					<Link to={"/"} className="nav-brand linked"><img src={logo}></img></Link>
 				</div>
-				{window.innerWidth <= 800 ? this.renderBurgerMenu() : this.renderRightSide()}
+				{isMobile ? this.renderBurgerMenu() : this.renderRightSide()}
 			</div>
 		);
 	}

@@ -256,6 +256,7 @@
 @media(max-width:800px) {
   .portrait-container{
     height: 363px !important;
+    margin-top: 120px;
   }
   .portrait-section{
     height: 363px !important;
