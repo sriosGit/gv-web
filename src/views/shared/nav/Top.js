@@ -1,11 +1,7 @@
 
 import React, { Component } from 'react';
 import logo from '../../../assets/img/logo4.png';
-//import Search from './Search'
 import { Link } from 'react-router-dom'
-//import UserNav from './UserNav'
-//import Notifications from './Notifications'
-//import style from '../../../styles/nav'
 import emailIcon from '../../../assets/img/emai-icon.svg'
 import phoneIcon from '../../../assets/img/phone-icon.svg'
 import { slide as Menu } from 'react-burger-menu'

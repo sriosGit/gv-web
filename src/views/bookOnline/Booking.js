@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { assingValue } from '../../helpers/stateHelper'
-import { listEvents } from '../../helpers/calendarHelper'
+//import { listEvents } from '../../helpers/calendarHelper'
+import { handleClientLoad } from '../../helpers/googleCalendar'
 import macitoMadera from '../../assets/img/Mazo.jpg'
 import Schedule from './Schedule'
 
@@ -23,7 +24,8 @@ class Booking extends Component {
             confirmationStep: false,
         }
         //this.addEvent = addEvent.bind(this)
-        //this.listEvents = listEvents.bind(this)
+		//this.listEvents = listEvents.bind(this)
+		handleClientLoad();
     }
     setService(e){
         this.setState({service: e.target.id})
