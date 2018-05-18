@@ -25,7 +25,11 @@ class Booking extends Component {
         }
         //this.addEvent = addEvent.bind(this)
 		//this.listEvents = listEvents.bind(this)
-		handleClientLoad();
+
+		// THIS CALL GOOGLE API !!!
+		// ASDFLLDGDLJGDLDGLKGLKGLKG
+		
+		//handleClientLoad();
     }
     setService(e){
         this.setState({service: e.target.id})
