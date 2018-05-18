@@ -26,7 +26,6 @@ class ContactUs extends Component {
   		}
 
   	}
-  	
 	renderLeftSide(){
 		return(
 			<div className="left-area pull-left">
@@ -38,19 +37,19 @@ class ContactUs extends Component {
 	                <div className="form-body">
 		                <div className="form-group inline">
 		                   	<div className="strong text-yellow">Full name:</div>
-		                    <input type="text" className="form-input" placeholder={"Ingresa tu nombre"}/>
+		                    <input id="nombre" type="text" className="form-input" placeholder={"Ingresa tu nombre"}/>
 		                 </div>
 						<div className="form-group inline">
 		                    <div className="strong text-yellow">E-mail:</div>
-		                    <input type="text" className="form-input" placeholder={"Ingresa tu e-mail"}/>
+		                    <input id="email" type="text" className="form-input" placeholder={"Ingresa tu e-mail"}/>
 		                </div>
 		                <div className="form-group">
 		                    <div className="strong text-yellow">Subject:</div>
-		                    <input type="text" className="form-input" placeholder={"Ingresa tu asunto"}/>
+		                    <input id="asunto" type="text" className="form-input" placeholder={"Ingresa tu asunto"}/>
 		                </div>
 		                <div className="form-group">
 	                    	<span className="strong text-yellow">Your message:</span>
-	                    	<textarea placeholder={"Ingresa tu situación"}/>
+	                    	<textarea  id="nombre" placeholder={"Ingresa tu situación"}/>
 	                    </div>
 	                    <div className="form-group submit">
 	                    	<button>Submit</button>

@@ -21,7 +21,6 @@ const HomeRoute = ({component: Component, ...rest}) => {
   return (
     <Route {...rest} render={matchProps => (
       <BasicLayout children={<Component {...matchProps} />} />
-          
     )} />
   )
 };

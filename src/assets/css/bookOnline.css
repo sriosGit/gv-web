@@ -1,6 +1,6 @@
 .book-online-container{
     background-color: white !important;
-    height: 580px;
+    height: 600px;
   }
    .book-online-container .left-area{
     text-align: left;
@@ -10,7 +10,6 @@
     padding-right: 30px;
     background-color: transparent;
     font-weight: 300;
-    
   }
   .book-online-container .right-area{
     text-align: left;
@@ -21,7 +20,6 @@
     padding-bottom: 30px;
     padding-right: 30px;
     font-weight: 300;
-   
   }
   .form-input{
   	border: 1px solid #a9a9a9
@@ -33,7 +31,44 @@
   	padding-top: 75px;
     width: 420px;
   }
+  .service-content{
+    width: 300px;
+    padding: 30px 30px;
+    font-size: 15px;
+    overflow: scroll;
+  }
+  .service-title{
+    font-size: 25px;
+  }
+  .service-card{
+    border: 1px solid gray;
+    height: 420; 
+    margin: 10px 10px;
+  }
+  .service-btn{
+    margin: 20px 20px;
+    padding: 10px 20px;
+    background: #ffcd00;
+    border: 0px;
+    color: white;
+  }
+  .service-btn-off{
+    margin: 20px 20px;
+    padding: 10px 20px;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+  .ant-radio-group{
+    visibility: hidden;
+  }
   @media(max-width: 800px){
+    .service-card{
+      height: 200px;
+    }
+    .service-content{
+      padding: 10px 30px;
+    }
   	.book-online-container .left-area{
   		text-align: left;
 	    height: 400px;
