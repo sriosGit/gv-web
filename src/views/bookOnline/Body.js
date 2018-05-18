@@ -15,7 +15,7 @@ class Body extends Component {
         }
         
     }
-  componentWillMount = () => {
+    componentWillMount = () => {
         this.updateDimensions()
     }
     componentDidMount = () => {

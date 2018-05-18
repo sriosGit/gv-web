@@ -1,17 +1,17 @@
-import readline from 'readline';
 const fs = require('fs');
+const readline = require('readline');
 const {google} = require('googleapis');
 const OAuth2Client = google.auth.OAuth2;
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 const TOKEN_PATH = 'credentials.json';
 
 // Load client secrets from a local file.
-fs.readFile('../config/client_secret.json', (err, content) => {
+global.asd = fs.readFile('../config/client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   authorize(JSON.parse(content), list);
 });
 
-export function listEvents(){
+export default function listEvents(){
 	fs.readFile('../config/client_secret.json', (err, content) => {
   	if (err) return console.log('Error loading client secret file:', err);
   	authorize(JSON.parse(content), list);
