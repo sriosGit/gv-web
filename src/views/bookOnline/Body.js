@@ -3,20 +3,22 @@ import Header from '../shared/nav/Header'
 import Banner from '../shared/common/Banner'
 import Booking from './Booking'
 import BottomBar from '../shared/common/BottomBar'
+import { handleClientLoad } from '../../helpers/googleCalendar'
 import '../../assets/css/App.css';
 import '../../assets/css/home.css';
 import '../../assets/css/bookOnline.css';
-
 class Body extends Component {
   constructor(props) {
         super(props)
         this.state = {
-            isMobile: window.innerWidth <= 800 || false
+            isMobile: window.innerWidth <= 800 || false,
+            gapiLoaded: false
         }
-        
+        this.handleClientLoad = handleClientLoad.bind(this);
     }
     componentWillMount = () => {
         this.updateDimensions()
+        this.handleClientLoad()
     }
     componentDidMount = () => {
         window.addEventListener("resize", this.updateDimensions);
@@ -34,10 +36,11 @@ class Body extends Component {
     }
   render() {
     const isMobile = window.innerWidth < 800
+    const {gapiLoaded} = this.state
     return (
       <div className="App">
         <Banner title={"BOOKING ONLINE"}/>
-        <Booking isMobile={isMobile}/>
+        {gapiLoaded ? <Booking gapiLoaded={gapiLoaded} isMobile={isMobile}/> : "CARGANDO API" }
       </div>
     );
   }

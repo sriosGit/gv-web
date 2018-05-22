@@ -6,6 +6,7 @@ import Booking from '../views/bookOnline/Body'
 import Services from '../views/services/Body'
 import ContactUs from '../views/contactUs/Body'
 import BasicLayout from '../views/shared/Layout'
+
 const onChange = () => {
 	window.scrollTo(0, 0)
 	window.location.reload();
@@ -25,11 +26,13 @@ const HomeRoute = ({component: Component, ...rest}) => {
   )
 };
 export default (
-	<Switch>
-	  <HomeRoute exact path="/" onChange={onChange} component={Home}/>
-	  <HomeRoute exact path="/about" onChange={onChange} component={AboutUs}/>
-	  <HomeRoute exact path="/bookwithus" onChange={onChange} component={Booking}/>
-	  <HomeRoute exact path="/services" onChange={onChange} component={Services}/>
-	  <HomeRoute exact path="/contactus" onChange={onChange} component={ContactUs}/>
+
+	<Switch>		
+	  	<HomeRoute exact path="/" onChange={onChange} component={Home}/>
+	  	<HomeRoute exact path="/about" onChange={onChange} component={AboutUs}/>
+	  	<HomeRoute exact path="/bookwithus" onChange={onChange} component={Booking}/>
+	  	<HomeRoute exact path="/services" onChange={onChange} component={Services}/>
+	  	<HomeRoute exact path="/contactus" onChange={onChange} component={ContactUs}/>
   	</Switch>  
+
 )

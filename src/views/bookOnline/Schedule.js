@@ -12,17 +12,11 @@ class Schedule extends Component{
         super(props);
 
         //let schedulerData = new SchedulerData(new moment("2017-12-18").format(DATE_FORMAT), ViewTypes.Week);
-        let schedulerData = new SchedulerData(moment(), ViewTypes.Week, false, false);
-        schedulerData.localeMoment.locale('zh-cn');
+        let schedulerData = new SchedulerData(moment(), ViewTypes.Week, false, false, {
+            checkConflict: true,
+        });
+        schedulerData.localeMoment.locale('es-pe');
         let resources = [
-                    {
-                       id: '7',
-                       name: '7:00 - 8:00'
-                    },
-                    {
-                       id: '8',
-                       name: '8:00 - 9:00'
-                    },
                     {
                        id: '9',
                        name: '9:00 - 10:00'
@@ -58,15 +52,42 @@ class Schedule extends Component{
                     {
                        id: '17',
                        name: '17:00 - 18:00'
+                    },
+                    {
+                       id: '18',
+                       name: '18:00 - 19:00'
                     }
                 ];
         schedulerData.setResources(resources);
         schedulerData.setEvents(DemoData.events);
         this.state = {
-            viewModel: schedulerData
+            viewModel: schedulerData,
+            //events: this.props.events
         }
-    }
 
+    }
+    componentWillMount(){
+      //console.log(this.props.events)
+      this.parseEventsToSchedule()
+    }
+    parseEventsToSchedule(){
+      const {viewModel} = this.state
+      const parsedEvents = []
+      //console.log(events)
+      this.props.events.map((event, i) => {
+        var startDate = Date.parse(event.start.dateTime)
+        var event = {
+          id: i,
+          start: event.start.dateTime ,
+          end: event.end.dateTime,
+          resourceId: startDate.getHours().toString(),
+          title: 'Reservado',
+          bgColor: '#D9D9D9'
+        }
+        parsedEvents.push(event)
+      });
+      viewModel.setEvents(parsedEvents)
+    }
     render(){
         const {viewModel} = this.state;
         return (
@@ -81,6 +102,8 @@ class Schedule extends Component{
                                eventItemClick={this.eventClicked}
                                onViewChange={this.onViewChange}
                                newEvent={this.newEvent}
+                               conflictOccurred={this.conflictOccurred}
+                               startResizable={false}
                     />
                     </center>
                 </div>
@@ -89,7 +112,7 @@ class Schedule extends Component{
     }
     onViewChange = (schedulerData, view) => {
         schedulerData.setViewType(view.viewType, view.showAgenda, view.isEventPerspective);
-        schedulerData.setEvents(DemoData.events);
+        this.parseEventsToSchedule();
         this.setState({
             viewModel: schedulerData
         })
@@ -104,7 +127,7 @@ class Schedule extends Component{
 
     nextClick = (schedulerData)=> {
         schedulerData.next();
-        schedulerData.setEvents(DemoData.events);
+        this.parseEventsToSchedule();
         this.setState({
             viewModel: schedulerData
         })
@@ -114,19 +137,25 @@ class Schedule extends Component{
     onSelectDate = (schedulerData, date) => {
         //console.log(date)
         schedulerData.setDate(date);
-        schedulerData.setEvents(DemoData.events);
+        this.parseEventsToSchedule();
         this.setState({
             viewModel: schedulerData
         })
     }
 
     eventClicked = (schedulerData, event) => {
-        alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
     };
 
+    conflictOccurred(){
+        alert('Lo sentimos, este horario ya esta reservado, pruebe con otro por favor.')
+    }
+
     newEvent = (schedulerData, slotId, slotName, start, end, type, item) => {
-        if(window.confirm(`¿Desea separar una cita en el siguiente horario? (${slotName} ${Date.parse(start).toString('d')})`)){
-            let newFreshId = 0;
+        var startDate = Date.parse(start)
+        if(Date.compare(Date.parse('tomorrow'), startDate)>0 || startDate.is().saturday() || startDate.is().sunday()){
+            alert("Por favor, escoja una fecha valida");
+        }else if(window.confirm(`¿Desea separar una cita en el siguiente horario? (${slotName} ${Date.parse(start).toString('d')})`)){
+            let newFreshId = 9999;
             schedulerData.events.forEach((item) => {
                 if(item.id >= newFreshId)
                     newFreshId = item.id;
@@ -141,8 +170,8 @@ class Schedule extends Component{
                 resourceId: slotId,
                 bgColor: 'purple'
             }
+            this.parseEventsToSchedule()
             schedulerData.addEvent(newEvent);
-            schedulerData.events.splice(newFreshId, 1)
             this.props.setDate(newStart, newEnd)
             this.setState({
                 viewModel: schedulerData

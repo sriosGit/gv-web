@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { assingValue } from '../../helpers/stateHelper'
 //import { listEvents } from '../../helpers/calendarHelper'
-import { handleClientLoad } from '../../helpers/googleCalendar'
+import { getEventList, isClientLoaded, addEvent } from '../../helpers/googleCalendar'
+import { FormattedDate, FormattedTime } from 'react-intl';
 import macitoMadera from '../../assets/img/Mazo.jpg'
 import Schedule from './Schedule'
 
 class Booking extends Component {
 	 
-
 	constructor(props) {
         super(props)
         this.state = {
@@ -19,17 +19,38 @@ class Booking extends Component {
             email: "",
             phone: "",
             comment: "",
+            gapiLoaded: this.props.gapiLoaded,
             dateConfirmed: false,
             userInfoStep: false,
-            confirmationStep: false,
+            events: []
         }
-        //this.addEvent = addEvent.bind(this)
+        this.addEvent = addEvent.bind(this)
 		//this.listEvents = listEvents.bind(this)
 
 		// THIS CALL GOOGLE API !!!
 		// ASDFLLDGDLJGDLDGLKGLKGLKG
-		
-		//handleClientLoad();
+		//console.log(events)
+    }
+    componentWillMount(){
+    	if (this.state.gapiLoaded){
+    		this.setState({events: getEventList()})
+    	}
+
+    }
+    componentWillUpdate(){
+    	if (isClientLoaded() && !this.state.gapiLoaded){
+    		this.setState({gapiLoaded: true}, () => {
+    			//console.log(this.state.gapiLoaded)
+    			this.setState({events: getEventList()})
+    	})
+    		
+    	}
+    	if(this.state.gapiLoaded && this.state.events === []){
+    		//this.setState({events: getEventList()})
+    		//console.log(getEventList())
+    	}
+    //	this.setState({events: global.gapi.client.calendar.events})
+
     }
     setService(e){
         this.setState({service: e.target.id})
@@ -42,8 +63,7 @@ class Booking extends Component {
     }
     submitConsult(){
     	const {start, end, name, email, phone, comment, service} = this.state
-    	//addEvent(start, end, name, email, phone, comment, service)
-
+    	this.addEvent(service, comment ,start, end, name, email, phone)
     }
     renderServiceBox(title, description){
     	const {isMobile} = this.props
@@ -103,19 +123,28 @@ class Booking extends Component {
 	                    	<span className="strong text-yellow">Comentario:</span>
 	                    	<textarea onChange={ assingValue.bind(this) } name="comment"  placeholder={"Ingresa tu situación"}/>
 	                    </div>
-	                    <div className="form-group submit">
-	                    	{isMobile ?<center><button onClick={this.submitConsult.bind(this)}>Submit</button></center> : <button  onClick={this.submitConsult.bind(this)}>Submit</button>}
-	                    </div>
 	                </div>
 	          	</div>
           	</div>
 			)
 	}
 	renderRightSide(){
+		const {service, start, end, name, isMobile} = this.state
+
 		return(
 			<div className="right-area pull-right">
            		<div className="right-details">
-           			<img className="img-mazo" src={macitoMadera}/>
+           			<div className="inline service-card">
+    					<div className="summary-content">
+	    					<center className="service-title">{service}</center>
+	    					<center style={{padding: "5px 0 0 0"}}>1 hr | Cita de Consulta</center>
+    					</div>
+    					<hr/>
+    					<center><FormattedDate value={start} day="numeric" month="long" year="numeric"/> | <FormattedTime value={start}/></center>
+    					<center className="form-group submit">
+    						{isMobile ?<center><button onClick={this.submitConsult.bind(this)}>Submit</button></center> : <button  onClick={this.submitConsult.bind(this)}>Submit</button>}
+    					</center>
+    				</div>
 	            </div>	 	
             </div>
 			)
@@ -132,20 +161,37 @@ class Booking extends Component {
 	}
 	renderScheduleForm(){
 		window.scrollTo(0, 150)
-		const {service, start} = this.state
+		const {service, start, events} = this.state
 		return(
 			<div>
-				<Schedule service={service} setDate={this.setDate.bind(this)}/>
+				<Schedule events={events} service={service} setDate={this.setDate.bind(this)}/>
 				<button onClick={start === "" ? null : this.dateConfirm.bind(this)} className={ start === "" ? "service-btn-off" : "service-btn"}>Continuar</button>
 			</div>
 			)
 	}
 	renderConfirmation(){
+		const {name, start, end} = this.state
 		return(
-			<div>Hello there</div>
+			<div className="confirmation-container">
+				<div className="confirmation-message">
+					<div className="confirmation-title">Gracias por su confianza, {this.state.name.split(' ')[0]}</div>
+					<div className="confirmation-subtitle">Nos comunicaremos con usted lo más pronto posible</div>
+					<br/>
+					<div className="confirmation-subtitle black">Su cita ha sido reservada para la siguiente fecha: <br/> <FormattedDate value={start} day="numeric" month="long" year="numeric"/> | <FormattedTime value={start}/> - <FormattedTime value={end}/></div>
+					<br/>
+					<br/>
+					<div className="confirmation-back">Haga click <a href="/" className="confirmation-link">aqu&iacute;</a> para volver al inicio</div>
+				</div>
+				<div className="right-area pull-right">
+           		<div className="right-details">
+           			<img className="img-mazo" src={macitoMadera}/>
+	            </div>	 	
+            	</div>
+			</div>
 			)
 	}
     render() {
+    	//console.log(getEventList())
     	const {isMobile, service, userInfoStep, dateConfirmed} = this.state
         return (
             <div className="full-width">
