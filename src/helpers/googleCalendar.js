@@ -2,6 +2,7 @@ var gapi = global.gapi;
 var gevents = global.events;
 global.loadedEvents = []
 var levents = global.loadedEvents
+var request = require("request")
 // Client ID and API key from the Developer Console
 var CLIENT_ID = '453827715405-pu2ceaebcdlksi8bv9eui1a0lkph0sde.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyAqYmy2Vl_C2HiqFbzm_ht6VSzqP9R2ar8';
@@ -47,7 +48,7 @@ function initClient() {
     // Handle the initial sign-in state.
     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     //THIS CALL AUTH
-    if (!gapi.auth2.getAuthInstance().isSignedIn.get()) handleAuthClick(undefined);
+    //if (!gapi.auth2.getAuthInstance().isSignedIn.get()) handleAuthClick(undefined);
   });
 }
 /**
@@ -55,11 +56,11 @@ function initClient() {
  *  appropriately. After a sign-in, the API is called.
  */
 export function updateSigninStatus(isSignedIn) {
-  if (isSignedIn) {
+  //if (isSignedIn) {
     //console.log(isSignedIn)
     listUpcomingEvents();
     //listUp()
-  }
+  //}
 }
 
 /**
