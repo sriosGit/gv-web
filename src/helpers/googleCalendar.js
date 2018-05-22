@@ -8,7 +8,7 @@ var API_KEY = 'AIzaSyAqYmy2Vl_C2HiqFbzm_ht6VSzqP9R2ar8';
 var CALENDAR_ID= 'dpb90e23u2oeobo6ktni8tcp2g@group.calendar.google.com'
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-var that
+var that = null
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/calendar";
@@ -47,7 +47,7 @@ function initClient() {
     // Handle the initial sign-in state.
     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     //THIS CALL AUTH
-    //handleAuthClick(undefined);
+    if (!gapi.auth2.getAuthInstance().isSignedIn.get()) handleAuthClick(undefined);
   });
 }
 /**
@@ -119,13 +119,6 @@ function listUpcomingEvents() {
 // stored credentials.
 export function addEvent(service, description, start, end, name, email, phone){
   that = this
-  console.log(service)
-  console.log(description)
-  console.log(start)
-  console.log(Date.parse(end).toString("s"))
-  console.log(name)
-  console.log(email)
-  console.log(phone)
   var event = {
     'summary': description,
     'description': "Cliente: " + name + " | " + phone + " | " + "\n" + "\n" + description ,

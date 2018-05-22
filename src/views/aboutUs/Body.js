@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Banner from '../shared/common/Banner'
 import Members from './Members'
-import ContactUs from '../shared/common/ContactUs'
 import '../../assets/css/App.css';
 import '../../assets/css/aboutUs.css';
 class Body extends Component {

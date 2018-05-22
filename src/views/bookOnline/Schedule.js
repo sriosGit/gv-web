@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {PropTypes} from 'prop-types' 
 import moment from 'moment'
 //import 'moment/locale/zh-cn';
-import Scheduler, {SchedulerData, ViewTypes, DATE_FORMAT, DemoData} from 'react-big-scheduler'
+import Scheduler, {SchedulerData, ViewTypes, DemoData} from 'react-big-scheduler'
 import withDragDropContext from './withDnDContext'
 import 'react-big-scheduler/lib/css/style.css'
 require('datejs')
@@ -76,7 +76,7 @@ class Schedule extends Component{
       //console.log(events)
       this.props.events.map((event, i) => {
         var startDate = Date.parse(event.start.dateTime)
-        var event = {
+        var newEvent = {
           id: i,
           start: event.start.dateTime ,
           end: event.end.dateTime,
@@ -84,7 +84,7 @@ class Schedule extends Component{
           title: 'Reservado',
           bgColor: '#D9D9D9'
         }
-        parsedEvents.push(event)
+        parsedEvents.push(newEvent)
       });
       viewModel.setEvents(parsedEvents)
     }

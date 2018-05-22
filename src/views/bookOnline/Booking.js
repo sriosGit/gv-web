@@ -45,10 +45,6 @@ class Booking extends Component {
     	})
     		
     	}
-    	if(this.state.gapiLoaded && this.state.events === []){
-    		//this.setState({events: getEventList()})
-    		//console.log(getEventList())
-    	}
     //	this.setState({events: global.gapi.client.calendar.events})
 
     }
