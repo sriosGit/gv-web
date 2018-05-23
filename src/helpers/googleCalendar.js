@@ -90,7 +90,7 @@ function listUpcomingEvents() {
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 10,
+    'maxResults': 30,
     'orderBy': 'startTime'
   }).then(function(response) {
     var events = response.result.items;
@@ -121,7 +121,7 @@ function listUpcomingEvents() {
 export function addEvent(service, description, start, end, name, email, phone){
   that = this
   var event = {
-    'summary': description,
+    'summary': service,
     'description': "Cliente: " + name + " | " + phone + " | " + "\n" + "\n" + description ,
     'start': {
       'dateTime': start ? Date.parse(start).toString("s") : (new Date()).addHours(1).toString("s"),

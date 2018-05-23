@@ -7,13 +7,12 @@ import phoneIcon from '../../../assets/img/phone-icon.svg'
 import { slide as Menu } from 'react-burger-menu'
 
 class Top extends Component {
-	
 
 	renderContact(img, title, subtitle){
 		return(
 			<div style={{marginRight: 25}} className="inline">
 				<div className="pull-left">
-					<img src={img}></img>
+					<img alt={"contatc_" + title} src={img}></img>
 				</div>
 				<div className="info-contact">
 				<div className="title-tab">{title}</div>
@@ -51,7 +50,7 @@ class Top extends Component {
 		return (
 			<div className={classes || "no-padding"}>
 				<div className="navbar-header App-logo pull-left inline">
-					<Link to={"/"} className="nav-brand linked"><img src={logo}></img></Link>
+					<Link to={"/"} className="nav-brand linked"><img alt="logo" src={logo}></img></Link>
 				</div>
 				{isMobile ? this.renderBurgerMenu() : this.renderRightSide()}
 			</div>

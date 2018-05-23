@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../shared/nav/Header'
 import Banner from '../shared/common/Banner'
 import Booking from './Booking'
-import BottomBar from '../shared/common/BottomBar'
 import { handleClientLoad } from '../../helpers/googleCalendar'
 import '../../assets/css/App.css';
 import '../../assets/css/home.css';

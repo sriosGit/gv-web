@@ -5,6 +5,7 @@ import { getEventList, isClientLoaded, addEvent } from '../../helpers/googleCale
 import { FormattedDate, FormattedTime } from 'react-intl';
 import macitoMadera from '../../assets/img/Mazo.jpg'
 import Schedule from './Schedule'
+import moment from 'moment'
 
 class Booking extends Component {
 	 
@@ -22,7 +23,7 @@ class Booking extends Component {
             gapiLoaded: this.props.gapiLoaded,
             dateConfirmed: false,
             userInfoStep: false,
-            events: []
+            events: [],   
         }
         this.addEvent = addEvent.bind(this)
 		//this.listEvents = listEvents.bind(this)
@@ -42,11 +43,8 @@ class Booking extends Component {
     		this.setState({gapiLoaded: true}, () => {
     			//console.log(this.state.gapiLoaded)
     			this.setState({events: getEventList()})
-    	})
-    		
+    		})
     	}
-    //	this.setState({events: global.gapi.client.calendar.events})
-
     }
     setService(e){
         this.setState({service: e.target.id})
@@ -125,23 +123,42 @@ class Booking extends Component {
 			)
 	}
 	renderRightSide(){
-		const {service, start, end, name, isMobile} = this.state
+		const {service, start, end, isMobile} = this.state
 
 		return(
 			<div className="right-area pull-right">
            		<div className="right-details">
-           			<div className="inline service-card">
+           			<div className="inline confirmation-card">
     					<div className="summary-content">
 	    					<center className="service-title">{service}</center>
 	    					<center style={{padding: "5px 0 0 0"}}>1 hr | Cita de Consulta</center>
     					</div>
     					<hr/>
-    					<center><FormattedDate value={start} day="numeric" month="long" year="numeric"/> | <FormattedTime value={start}/></center>
+    					<center><FormattedDate value={start} day="numeric" month="long" year="numeric"/> | <FormattedTime value={start}/> - <FormattedTime value={end}/></center>
     					<center className="form-group submit">
     						{isMobile ?<center><button onClick={this.submitConsult.bind(this)}>Submit</button></center> : <button  onClick={this.submitConsult.bind(this)}>Submit</button>}
     					</center>
     				</div>
 	            </div>	 	
+            </div>
+			)
+	}
+	renderMobileRightSide(){
+		const {service, start, end, isMobile} = this.state
+
+		return(
+			<div className="right-area">
+           			<div className="inline confirmation-card">
+    					<div className="summary-content">
+	    					<center className="service-title">{service}</center>
+	    					<center style={{padding: "5px 0 0 0"}}>1 hr | Cita de Consulta</center>
+    					</div>
+    					<hr/>
+    					<center><FormattedDate value={start} day="numeric" month="long" year="numeric"/> | <FormattedTime value={start}/> - <FormattedTime value={end}/></center>
+    					<center className="form-group submit">
+    						{isMobile ?<center><button onClick={this.submitConsult.bind(this)}>Submit</button></center> : <button  onClick={this.submitConsult.bind(this)}>Submit</button>}
+    					</center>
+    				</div>
             </div>
 			)
 	}
@@ -151,44 +168,46 @@ class Booking extends Component {
         return (
             <div className="book-online-container">
           		{this.renderLeftSide(isMobile)}
-                {isMobile ? null : this.renderRightSide()}
+                {isMobile ? this.renderMobileRightSide() : this.renderRightSide()}
             </div>
         );
 	}
 	renderScheduleForm(){
 		window.scrollTo(0, 150)
-		const {service, start, events} = this.state
+		const {service, start, events, isMobile} = this.state
 		return(
 			<div>
-				<Schedule events={events} service={service} setDate={this.setDate.bind(this)}/>
+				<Schedule events={events} service={service} setDate={this.setDate.bind(this)} isMobile={isMobile}/>
 				<button onClick={start === "" ? null : this.dateConfirm.bind(this)} className={ start === "" ? "service-btn-off" : "service-btn"}>Continuar</button>
 			</div>
 			)
 	}
 	renderConfirmation(){
-		const {name, start, end} = this.state
+		const {name, start, end, isMobile} = this.state
 		return(
 			<div className="confirmation-container">
 				<div className="confirmation-message">
-					<div className="confirmation-title">Gracias por su confianza, {this.state.name.split(' ')[0]}</div>
+					<div className="confirmation-title">Gracias por su confianza, {name.split(' ')[0]}</div>
 					<div className="confirmation-subtitle">Nos comunicaremos con usted lo más pronto posible</div>
 					<br/>
 					<div className="confirmation-subtitle black">Su cita ha sido reservada para la siguiente fecha: <br/> <FormattedDate value={start} day="numeric" month="long" year="numeric"/> | <FormattedTime value={start}/> - <FormattedTime value={end}/></div>
 					<br/>
 					<br/>
-					<div className="confirmation-back">Haga click <a href="/" className="confirmation-link">aqu&iacute;</a> para volver al inicio</div>
-				</div>
-				<div className="right-area pull-right">
-           		<div className="right-details">
-           			<img className="img-mazo" src={macitoMadera}/>
-	            </div>	 	
-            	</div>
+					<div className="confirmation-back">{isMobile ? "Pulse" : "Haga click"} <a href="/" className="confirmation-link">aqu&iacute;</a> para volver al inicio</div>
+				</div>		
+                {
+                    isMobile ? null : 
+                    <div className="right-area pull-right">
+           		        <div className="right-details">
+           			      <img className="img-mazo" alt="wood" src={macitoMadera}/>
+	                    </div>	 	
+            	    </div> 
+                }
 			</div>
 			)
 	}
     render() {
-    	//console.log(getEventList())
-    	const {isMobile, service, userInfoStep, dateConfirmed} = this.state
+    	const { service, userInfoStep, dateConfirmed, isMobile } = this.state
         return (
             <div className="full-width">
           		{service === "" ? this.renderServiceForm() : dateConfirmed ? 

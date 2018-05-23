@@ -1,21 +1,27 @@
 import React, {Component} from 'react'
-import {PropTypes} from 'prop-types' 
 import moment from 'moment'
+import 'moment/locale/es'
 //import 'moment/locale/zh-cn';
 import Scheduler, {SchedulerData, ViewTypes, DemoData} from 'react-big-scheduler'
+import { FormattedDate, FormattedTime } from 'react-intl';
 import withDragDropContext from './withDnDContext'
+import DatePicker from 'react-datepicker';
 import 'react-big-scheduler/lib/css/style.css'
+import 'react-datepicker/dist/react-datepicker.css';
+import '../../assets/css/App.css';
 require('datejs')
 
 class Schedule extends Component{
     constructor(props){
         super(props);
-
-        //let schedulerData = new SchedulerData(new moment("2017-12-18").format(DATE_FORMAT), ViewTypes.Week);
-        let schedulerData = new SchedulerData(moment(), ViewTypes.Week, false, false, {
+        moment.locale('es')
+        let schedulerData = new SchedulerData(new moment(), ViewTypes.Week, false, false, {
             checkConflict: true,
-        });
-        schedulerData.localeMoment.locale('es-pe');
+            resourceName: 'Día/Mes',
+            startResizable: false,
+            endResizable: false,
+            movable: false,
+        }, undefined, moment);
         let resources = [
                     {
                        id: '9',
@@ -62,18 +68,22 @@ class Schedule extends Component{
         schedulerData.setEvents(DemoData.events);
         this.state = {
             viewModel: schedulerData,
-            //events: this.props.events
+            isOpen: false,
+            isMobile: this.props.isMobile,
+            startDate:  moment(new Date()).add(1,'days'),
+            available: [],
+            hour: 0
         }
-
+        this.handleChange = this.handleChange.bind(this);
+        this.toggleCalendar = this.toggleCalendar.bind(this)
     }
     componentWillMount(){
-      //console.log(this.props.events)
       this.parseEventsToSchedule()
+      this.getAvailable()
     }
     parseEventsToSchedule(){
       const {viewModel} = this.state
       const parsedEvents = []
-      //console.log(events)
       this.props.events.map((event, i) => {
         var startDate = Date.parse(event.start.dateTime)
         var newEvent = {
@@ -88,14 +98,91 @@ class Schedule extends Component{
       });
       viewModel.setEvents(parsedEvents)
     }
+    handleChange (date) {
+        this.setState({startDate: date}, () => {
+            this.getAvailable()
+        })
+        this.toggleCalendar()
+    }
+
+    toggleCalendar (e) {
+        e && e.preventDefault()
+        this.setState({isOpen: !this.state.isOpen})
+    }
+    selectHour(e){
+        const start = e.target.value
+        const end = Date.parse(start).add(1).hours().toString()
+        this.props.setDate(start, end)
+        this.setState({hour: Date.parse(start).getHours()})
+
+    }
+    getAvailable(){
+        const allHours = [9, 10, 11, 12 ,13 ,14 ,15 ,16, 17, 18]
+        const available = []
+        const startDate = this.state.startDate._d     
+        this.props.events.map((event, i) => { 
+            const start = Date.parse(event.start.dateTime)
+            if (start.getFullYear() === startDate.getFullYear() &&
+                start.getMonth() === startDate.getMonth() &&
+                start.getDate() === startDate.getDate()){
+                
+                var index = allHours.indexOf(start.getHours());
+                if (index > -1) {
+                    allHours.splice(index, 1);
+                }       
+            }
+        });
+
+        allHours.map((hour, i) => {
+            available.push(Date.parse(startDate).set({hour: hour, minute: 0, second: 0}))
+        })
+        this.setState({available: available})
+    }
+    isSelectedHour(i){
+        console.log(this.state.hour)
+       return  i === this.state.hour ? "hour-btn-active" : "hour-btn" 
+    }
+    renderMobile(){
+        const {startDate, available} = this.state
+        return(
+            <div>
+                <div style={{margin: 30}}>
+                1. Selecciona el día: <button
+                    className="example-custom-input"
+                    onClick={this.toggleCalendar}>
+                    {startDate.format("DD-MM-YYYY")}
+                </button>
+                {
+                    this.state.isOpen && (
+                        <DatePicker
+                            selected={startDate}
+                            onChange={this.handleChange}
+                            withPortal
+                            inline />
+                    )
+                }
+                </div> 
+                2. Selecciona la hora: 
+                <div>         
+                {
+                    available.length > 0 ? available.map((event, i) => {
+                        return <button value={event} key={i} onClick={this.selectHour.bind(this)} className={this.isSelectedHour(Date.parse(event).getHours())}>{Date.parse(event).getHours()}:00</button>
+                    }) : null
+                }
+                </div>
+            </div>
+            )
+    }
     render(){
-        const {viewModel} = this.state;
+        const {viewModel, isMobile, available} = this.state;
         return (
             <div>
                 <div>
-                    <h3 style={{textAlign: 'center'}}>Escoja una fecha disponible</h3>
+                    <div style={{textAlign: 'left', fontWeight: 300, margin: 15}} className="form-title black full-width">
+                        <span className="strong">RESERVE </span>SU CONSULTA
+                    </div>
                     <center>
-                    <Scheduler schedulerData={viewModel}
+                    {!isMobile ? <Scheduler schedulerData={viewModel}
                                prevClick={this.prevClick}
                                nextClick={this.nextClick}
                                onSelectDate={this.onSelectDate}
@@ -104,7 +191,7 @@ class Schedule extends Component{
                                newEvent={this.newEvent}
                                conflictOccurred={this.conflictOccurred}
                                startResizable={false}
-                    />
+                    /> : this.renderMobile()}
                     </center>
                 </div>
             </div>
@@ -135,7 +222,6 @@ class Schedule extends Component{
 
 
     onSelectDate = (schedulerData, date) => {
-        //console.log(date)
         schedulerData.setDate(date);
         this.parseEventsToSchedule();
         this.setState({
