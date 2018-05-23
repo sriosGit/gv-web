@@ -17,7 +17,13 @@ var SCOPES = "https://www.googleapis.com/auth/calendar";
  *  On load, called to load the auth2 library and API client library.
  */
 export function handleClientLoad() {
-  gapi.load('client:auth2', initClient);
+  gapi.load('client:auth2', {
+    callback :initClient,
+  onerror: function() {
+    // Handle loading error.
+    initClient;
+  }
+});
   that = this
   //console.log(this)
 }
