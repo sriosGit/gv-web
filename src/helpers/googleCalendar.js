@@ -40,14 +40,14 @@ export function isClientLoaded(){
 function initClient() {
   //console.log(this)
   //console.log(that)
-  console.log('gapi loaded')
+  alert('gapi loaded')
   gapi.client.init({
     apiKey: API_KEY,
     clientId: CLIENT_ID,
     discoveryDocs: DISCOVERY_DOCS,
     scope: SCOPES
   }).then(function () {
-    console.log('client loaded')
+    alert('client loaded')
     //that.setState({gapiLoaded: true})
     //this.setState({gapiLoaded: true})
     // Listen for sign-in state changes.
