@@ -57,6 +57,8 @@ function initClient() {
     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     //THIS CALL AUTH
     //if (!gapi.auth2.getAuthInstance().isSignedIn.get()) handleAuthClick(undefined);
+  }, function(error) {
+    alert(error);
   });
 }
 /**
