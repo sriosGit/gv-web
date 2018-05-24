@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from 'react-simple-loading';
 import Banner from '../shared/common/Banner'
 import Booking from './Booking'
 import { handleClientLoad } from '../../helpers/googleCalendar'
@@ -38,7 +39,11 @@ class Body extends Component {
     return (
       <div className="App">
         <Banner title={"BOOKING ONLINE"}/>
-        {gapiLoaded ? <Booking gapiLoaded={gapiLoaded} isMobile={isMobile}/> : "CARGANDO API" }
+        {gapiLoaded ? <Booking gapiLoaded={gapiLoaded} isMobile={isMobile}/> : <div className="book-online-container">
+        <Loading  color={'#ffcd00'}
+                  stroke={'10px'}
+                  size={'100px'}
+        /></div> }
       </div>
     );
   }

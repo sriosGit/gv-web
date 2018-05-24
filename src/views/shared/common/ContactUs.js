@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import GMap from './Map'
+import { assingValue } from '../../../helpers/stateHelper'
 class ContactUs extends Component {
 
 	constructor(props) {
         super(props)
         this.state = {
-            isMobile: window.innerWidth <= 800 || false
+            isMobile: window.innerWidth <= 800 || false,
+            name: "",
+            email: "",
+            topic: "",
+            message: ""
         }
         
     }
@@ -26,6 +31,10 @@ class ContactUs extends Component {
   		}
 
   	}
+  	submit(){
+  		const {name, email, topic, message} = this.state
+  		window.open('mailto:'+email+'?subject='+topic+' - '+name+' - '+email+'&body='+message);
+  	}
 	renderLeftSide(){
 		return(
 			<div className="left-area pull-left">
@@ -37,22 +46,22 @@ class ContactUs extends Component {
 	                <div className="form-body">
 		                <div className="form-group inline">
 		                   	<div className="strong text-yellow">Full name:</div>
-		                    <input id="nombre" type="text" className="form-input" placeholder={"Ingresa tu nombre"}/>
+		                    <input name="name" onChange={ assingValue.bind(this) } id="nombre" type="text" className="form-input" placeholder={"Ingresa tu nombre"}/>
 		                 </div>
 						<div className="form-group inline">
 		                    <div className="strong text-yellow">E-mail:</div>
-		                    <input id="email" type="text" className="form-input" placeholder={"Ingresa tu e-mail"}/>
+		                    <input name="email" onChange={ assingValue.bind(this) } id="email" type="text" className="form-input" placeholder={"Ingresa tu e-mail"}/>
 		                </div>
 		                <div className="form-group">
 		                    <div className="strong text-yellow">Subject:</div>
-		                    <input id="asunto" type="text" className="form-input" placeholder={"Ingresa tu asunto"}/>
+		                    <input name="topic" onChange={ assingValue.bind(this) } id="asunto" type="text" className="form-input" placeholder={"Ingresa tu asunto"}/>
 		                </div>
 		                <div className="form-group">
 	                    	<span className="strong text-yellow">Your message:</span>
-	                    	<textarea  id="nombre" placeholder={"Ingresa tu situación"}/>
+	                    	<textarea name="message" onChange={ assingValue.bind(this) } id="nombre" placeholder={"Ingresa tu situación"}/>
 	                    </div>
 	                    <div className="form-group submit">
-	                    	<button>Submit</button>
+	                    	<button onClick={this.submit.bind(this)}>Submit</button>
 	                    </div>
 	                </div>
 	          	</div>
@@ -70,19 +79,19 @@ class ContactUs extends Component {
 	                <div className="form-body">
 		                <div className="form-group">
 		                   	<div className="strong text-yellow">Full name:</div>
-		                    <input type="text" className="form-input" placeholder={"Ingresa tu nombre"}/>
+		                    <input name="name" onChange={ assingValue.bind(this) } type="text" className="form-input" placeholder={"Ingresa tu nombre"}/>
 		                 </div>
 						<div className="form-group">
 		                    <div className="strong text-yellow">E-mail:</div>
-		                    <input type="text" className="form-input" placeholder={"Ingresa tu e-mail"}/>
+		                    <input name="email" onChange={ assingValue.bind(this) } type="text" className="form-input" placeholder={"Ingresa tu e-mail"}/>
 		                </div>
 		                <div className="form-group">
 		                    <div className="strong text-yellow">Subject:</div>
-		                    <input type="text" className="form-input" placeholder={"Ingresa tu asunto"}/>
+		                    <input name="topic" onChange={ assingValue.bind(this) } type="text" className="form-input" placeholder={"Ingresa tu asunto"}/>
 		                </div>
 		                <div className="form-group">
 	                    	<span className="strong text-yellow">Your message:</span>
-	                    	<textarea placeholder={"Ingresa tu situación"}/>
+	                    	<textarea name="message" onChange={ assingValue.bind(this) } placeholder={"Ingresa tu situación"}/>
 	                    </div>
 	                    <div className="form-group submit">
 	                    	<button>Submit</button>

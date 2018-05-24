@@ -21,7 +21,8 @@
     "react-google-calendar-api": "^1.0.5",
     "react-intl": "^2.4.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-simple-loading": "0.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
