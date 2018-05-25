@@ -6,14 +6,11 @@ import '../../assets/css/App.css';
 import '../../assets/css/home.css';
 
 class Body extends Component {
-//<Portrait isMobile={isMobile}/>
- //       <PracticeAreas isMobile={isMobile}/>
-   //     <OurAttorneys isMobile={isMobile}/>
-   //
+
    	constructor(props) {
         super(props)
         this.state = {
-            isMobile: window.innerWidth <= 800 || false
+            isMobile: this.props.isMobile || window.innerWidth <= 800
         }
         
     }

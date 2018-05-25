@@ -139,11 +139,11 @@ class Schedule extends Component{
         this.setState({available: available})
     }
     isSelectedHour(i){
-        console.log(this.state.hour)
        return  i === this.state.hour ? "hour-btn-active" : "hour-btn" 
     }
     renderMobile(){
         const {startDate, available} = this.state
+
         return(
             <div>
                 <div style={{margin: 30}}>
@@ -166,7 +166,8 @@ class Schedule extends Component{
                 <div>         
                 {
                     available.length > 0 ? available.map((event, i) => {
-                        return <button value={event} key={i} onClick={this.selectHour.bind(this)} className={this.isSelectedHour(Date.parse(event).getHours())}>{Date.parse(event).getHours()}:00</button>
+                        const parsedEvent = Date.parse(event)
+                        return <button value={event} key={i} onClick={this.selectHour.bind(this)} className={this.isSelectedHour(parsedEvent.getHours())}>{parsedEvent.getHours()}:00</button>
                     }) : null
                 }
                 </div>
@@ -178,9 +179,9 @@ class Schedule extends Component{
         return (
             <div>
                 <div>
-                    <div style={{textAlign: 'left', fontWeight: 300, margin: 15}} className="form-title black full-width">
-                        <span className="strong">RESERVE </span>SU CONSULTA
-                    </div>
+                    <center style={{textAlign: 'left', fontWeight: 300, margin: 15}} className="form-title black full-width container">
+                        <span style={{}} className="strong">RESERVE </span>SU CONSULTA
+                    </center>
                     <center>
                     {!isMobile ? <Scheduler schedulerData={viewModel}
                                prevClick={this.prevClick}

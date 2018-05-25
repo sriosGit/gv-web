@@ -38,25 +38,16 @@ export function isClientLoaded(){
  *  listeners.
  */
 function initClient() {
-  //console.log(this)
-  //console.log(that)
   gapi.client.init({
     apiKey: API_KEY,
     clientId: CLIENT_ID,
     discoveryDocs: DISCOVERY_DOCS,
     scope: SCOPES
   }).then(function () {
-    //that.setState({gapiLoaded: true})
-    //this.setState({gapiLoaded: true})
-    // Listen for sign-in state changes.
-    //hat.setState({gapiLoaded: true})
     gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-    // Handle the initial sign-in state.
     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    //THIS CALL AUTH
-    //if (!gapi.auth2.getAuthInstance().isSignedIn.get()) handleAuthClick(undefined);
   }, function(error) {
-    alert(error);
+    alert("Ha ocurrido un error, por favor intentelo más tarde");
   });
 }
 /**
@@ -64,11 +55,7 @@ function initClient() {
  *  appropriately. After a sign-in, the API is called.
  */
 export function updateSigninStatus(isSignedIn) {
-  //if (isSignedIn) {
-    //console.log(isSignedIn)
     listUpcomingEvents();
-    //listUp()
-  //}
 }
 
 /**
@@ -104,17 +91,6 @@ function listUpcomingEvents() {
     var events = response.result.items;
     if (events.length > 0) {
       gevents = events
-      //console.log(events)
-      //global.gapi = gapi
-      //returnEvents()
-      /*for ( var i = 0; i < events.length; i++) {
-        var event = events[i];
-        var when = event.start.dateTime;
-        if (!when) {
-          when = event.start.date;
-        }
-        console.log(event.summary + ' (' + when + ')')
-      }*/
       that.setState({gapiLoaded: true})
     } else {
         console.log('No upcoming events found.');

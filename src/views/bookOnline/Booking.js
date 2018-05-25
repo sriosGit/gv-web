@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { assingValue } from '../../helpers/stateHelper'
-//import { listEvents } from '../../helpers/calendarHelper'
 import { getEventList, isClientLoaded, addEvent } from '../../helpers/googleCalendar'
 import { FormattedDate, FormattedTime } from 'react-intl';
 import macitoMadera from '../../assets/img/Mazo.jpg'
@@ -26,11 +25,6 @@ class Booking extends Component {
             events: [],   
         }
         this.addEvent = addEvent.bind(this)
-		//this.listEvents = listEvents.bind(this)
-
-		// THIS CALL GOOGLE API !!!
-		// ASDFLLDGDLJGDLDGLKGLKGLKG
-		//console.log(events)
     }
     componentWillMount(){
     	if (this.state.gapiLoaded){
@@ -41,7 +35,6 @@ class Booking extends Component {
     componentWillUpdate(){
     	if (isClientLoaded() && !this.state.gapiLoaded){
     		this.setState({gapiLoaded: true}, () => {
-    			//console.log(this.state.gapiLoaded)
     			this.setState({events: getEventList()})
     		})
     	}

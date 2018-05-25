@@ -11,7 +11,7 @@ class Body extends Component {
 	constructor(props) {
         super(props)
         this.state = {
-            isMobile: window.innerWidth <= 800 || false
+            isMobile: this.props.isMobile || window.innerWidth <= 800
         }
         
     }
