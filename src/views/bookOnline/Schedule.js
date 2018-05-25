@@ -3,7 +3,6 @@ import moment from 'moment'
 import 'moment/locale/es'
 //import 'moment/locale/zh-cn';
 import Scheduler, {SchedulerData, ViewTypes, DemoData} from 'react-big-scheduler'
-import { FormattedDate, FormattedTime } from 'react-intl';
 import withDragDropContext from './withDnDContext'
 import DatePicker from 'react-datepicker';
 import 'react-big-scheduler/lib/css/style.css'

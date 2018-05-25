@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../shared/nav/Header'
 import Banner from '../shared/common/Banner'
-import ContactUs from '../shared/common/ContactUs'
 import GMap from '../shared/common/Map'
-import BottomBar from '../shared/common/BottomBar'
 import '../../assets/css/App.css';
 import '../../assets/css/home.css';
 import '../../assets/css/contactUs.css';

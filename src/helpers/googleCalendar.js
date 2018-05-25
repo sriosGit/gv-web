@@ -1,8 +1,6 @@
 var gapi = global.gapi;
 var gevents = global.events;
 global.loadedEvents = []
-var levents = global.loadedEvents
-var request = require("request")
 // Client ID and API key from the Developer Console
 var CLIENT_ID = '453827715405-pu2ceaebcdlksi8bv9eui1a0lkph0sde.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyAqYmy2Vl_C2HiqFbzm_ht6VSzqP9R2ar8';
@@ -106,6 +104,7 @@ export function addEvent(service, description, start, end, name, email, phone){
   that = this
   var event = {
     'summary': service,
+    'location': 'Calle B, Cercado de Lima 15038',
     'description': "Cliente: " + name + " | " + phone + " | " + "\n" + "\n" + description ,
     'start': {
       'dateTime': start ? Date.parse(start).toString("s") : (new Date()).addHours(1).toString("s"),
@@ -129,7 +128,8 @@ export function addEvent(service, description, start, end, name, email, phone){
 
 var request = gapi.client.calendar.events.insert({
   'calendarId': CALENDAR_ID,
-  'resource': event
+  'resource': event,
+  'sendNotifications': true
 });
 
 request.execute(function(event) {

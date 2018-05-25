@@ -33,7 +33,7 @@ class ContactUs extends Component {
   	}
   	submit(){
   		const {name, email, topic, message} = this.state
-  		window.open('mailto:'+email+'?subject='+topic+' - '+name+' - '+email+'&body='+message);
+  		window.open('mailto:cecilia@gvaisman.com?subject='+topic+' - '+name+' - '+email+'&body='+message);
   	}
 	renderLeftSide(){
 		return(
